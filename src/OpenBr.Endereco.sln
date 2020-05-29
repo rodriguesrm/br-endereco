@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30104.148
+MinimumVisualStudioVersion = 15.0.26124.0
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{E93C5BBE-B737-48F7-B858-358A213D67D3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docker", "Docker", "{9D626D2D-10AD-4CB2-99AB-1D96CA4FEC4E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBr.Endereco.Web.Api", "OpenBr.Endereco.Web.Api\OpenBr.Endereco.Web.Api.csproj", "{26FE693B-73BA-40BC-AD38-41E774F908AF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBr.Endereco.Business", "OpenBr.Endereco.Business\OpenBr.Endereco.Business.csproj", "{C2AD7FBA-D3AC-4D52-B750-1DBE47C3373A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{26FE693B-73BA-40BC-AD38-41E774F908AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26FE693B-73BA-40BC-AD38-41E774F908AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26FE693B-73BA-40BC-AD38-41E774F908AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26FE693B-73BA-40BC-AD38-41E774F908AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2AD7FBA-D3AC-4D52-B750-1DBE47C3373A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2AD7FBA-D3AC-4D52-B750-1DBE47C3373A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2AD7FBA-D3AC-4D52-B750-1DBE47C3373A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2AD7FBA-D3AC-4D52-B750-1DBE47C3373A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {937FDEB3-F47C-43AF-9BD2-3ABE8FE049D5}
+	EndGlobalSection
+EndGlobal

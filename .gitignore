@@ -247,3 +247,4 @@ ModelManifest.xml
 # Files project to ignore
 src/FeiraEmCasa.Web.Api/FeiraEmCasa.Web.Api.xml
 /src/FeiraEmCasa.Web.Api/wwwroot/log
+/src/Br.Endereco.Web.Api/wwwroot/data/hc.db
