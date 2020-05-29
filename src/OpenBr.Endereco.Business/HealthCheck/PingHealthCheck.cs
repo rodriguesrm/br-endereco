@@ -3,7 +3,7 @@ using System.Net.NetworkInformation;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Br.Endereco.Business.HealthCheck
+namespace OpenBr.Endereco.Business.HealthCheck
 {
 
     /// <summary>

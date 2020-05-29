@@ -11,6 +11,8 @@ API de Endereços Brasileiros com base inicial atualizada de 2019.
 
 ## Preparaçao do Banco [ `MongoDb` ]
 
+### A partir do zero
+
 Conecte-se a instância MongoDb destinada a aplicação.
 
 1. Crie o banco de dados
@@ -27,11 +29,19 @@ Conecte-se a instância MongoDb destinada a aplicação.
     `mongoimport --host=<host> --username=<user> --password=<password> --authenticationDatabase=<authDb> --db=<dbName> --collection=cep --file=<path>/ceps.json --jsonArray`
 5. asdfas
 
+### Deixando aplicação criar a base
+
+A aplicação irá criar as collections na base MongoDb.
+
+1. Suba a aplicação no ambiente.
+2. Importe o arquivo `ceps.json`, que pode ser extraído do arquivo `ceps.zip` disponível na pasta `dump` usando o `mongoimport`:
+    `mongoimport --host=<host> --username=<user> --password=<password> --authenticationDatabase=<authDb> --db=<dbName> --collection=cep --file=<path>/ceps.json --jsonArray`
+
 ### BackLog
 
-  - Health-Check
-  - Swagger
-  - Dump inicial base de cep
-  - Serilog
-  - Docker-Compose
-  - Serviço (Worker) para busca nos correios de CEPs não encontrados
+  [x] Health-Check 
+  [ ] Swagger
+  [ ] Dump inicial base de cep
+  [ ] Serilog
+  [ ] Docker-Compose
+  [ ] Serviço (Worker) para busca nos correios de CEPs não encontrados
