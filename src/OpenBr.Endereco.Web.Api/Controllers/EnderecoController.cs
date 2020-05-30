@@ -25,6 +25,9 @@ namespace OpenBr.Endereco.Web.Api.Controllers
         /// <param name="repository">Repositóro de cep</param>
         /// <param name="cep">Cep a ser consultado</param>
         /// <param name="cancellationToken">Token de cancelamento</param>
+        /// <response code="200">Sucesso na busca, retorno dos dados do cep</response>
+        /// <response code="400">Requisição inválida, verifique as mensagens</response>
+        /// <response code="404">Cep não localizado</response>
         [HttpGet("cep/{cep}")]
         [ProducesResponseType(typeof(EnderecoResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ValidacaoResult), StatusCodes.Status400BadRequest)]
@@ -37,7 +40,7 @@ namespace OpenBr.Endereco.Web.Api.Controllers
 
             CepDocument doc = await repository.ObterPorCep(cep, cancellationToken);
             if (doc == null)
-                return NotFound("CEP não encontrado");
+                return NotFound($"CEP '{cep}' não encontrado");
             else
                 return Ok(doc.Map());
         }

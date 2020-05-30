@@ -1,7 +1,8 @@
-﻿using OpenBr.Endereco.Business.Infra.MongoDb;
-using OpenBr.Endereco.Business.Repositories;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
+using OpenBr.Endereco.Business.Infra.MongoDb;
+using OpenBr.Endereco.Business.Repositories;
+using OpenBr.Endereco.Business.Infra.Config;
 
 namespace OpenBr.Endereco.Business.Infra.IoC
 {
@@ -22,7 +23,7 @@ namespace OpenBr.Endereco.Business.Infra.IoC
 
             // Configurações
             services.AddScoped<IConfigurationBuilder, ConfigurationBuilder>();
-
+            services.Configure<ApplicationConfig>(configuration.Bind);
 
             //MongoDB
             services.AddScoped<MongoDatabaseProvider>();
