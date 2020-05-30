@@ -140,6 +140,16 @@ namespace OpenBr.Endereco.Web.Api
 
             #endregion
 
+            app.UseCors(c =>
+            {
+                c.AllowAnyHeader();
+                c.AllowAnyMethod();
+                c.AllowAnyOrigin();
+            });
+
+            app.UseStaticFiles();
+            app.UseResponseCaching();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
