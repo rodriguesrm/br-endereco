@@ -1,0 +1,35 @@
+version: '2'
+
+services:
+  
+  brasilendereco:
+    container_name: brasilendereco
+    build: 
+      context: .
+      dockerfile: OpenBr.Endereco.Web.Api/Dockerfile
+    ports: 
+      - "5000:80"
+    environment:  
+      - ConnectionStrings:MongoDb=mongodb://admin:admin@mongoBrEndereco:27017/endereco?authSource=admin&readPreference=primary&ssl=false
+      - HealthChecksUI:HealthChecks:0:Uri=http://localhost/selfcheck
+    depends_on: 
+      - "mongoBrEndereco"
+    networks: 
+      - netBrEndereco
+
+  mongoBrEndereco:
+    container_name: mongoBrEndereco
+    image: mongo
+    restart: always
+    ports:
+        - "27017:27017"
+    environment:
+        MONGO_INITDB_DATABASE: admin
+        MONGO_INITDB_ROOT_USERNAME: admin
+        MONGO_INITDB_ROOT_PASSWORD: admin
+    networks: 
+      - netBrEndereco
+
+networks: 
+  netBrEndereco:
+    driver: bridge
