@@ -124,7 +124,7 @@ namespace OpenBr.Endereco.Web.Api
 
             #endregion
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseRouting();
 
