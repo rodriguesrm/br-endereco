@@ -35,6 +35,7 @@ namespace OpenBr.Endereco.Business.Infra.IoC
 
             // Repositorios
             services.AddScoped<ICepRepository, CepRepository>();
+            services.AddScoped<IBuscaRepository, BuscaRepository>();
 
             return services;
 

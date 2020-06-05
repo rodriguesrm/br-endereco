@@ -97,7 +97,7 @@ namespace OpenBr.Endereco.Business.Repositories
             bool result = false;
 
             if (colecoes != null)
-                await colecoes.ForEachAsync(document => result = document["name"].AsString.Equals(_nomeColecao));
+                await colecoes.ForEachAsync(document => result = result || document["name"].AsString.Equals(_nomeColecao));
 
             return result;
 

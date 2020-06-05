@@ -1,17 +1,12 @@
-﻿using OpenBr.Endereco.Business.Repositories;
-
-namespace OpenBr.Endereco.Business.Documents
+﻿namespace OpenBr.Endereco.Business.Documents
 {
 
 
     /// <summary>
     /// Documento de Cep
     /// </summary>
-    public class CepDocument : IEntity
+    public class CepDocument : DocumentBase
     {
-
-        /// <inheritdoc/>
-        public string Id { get; }
 
         /// <summary>
         /// Número do cep
