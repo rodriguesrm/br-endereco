@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "OpenBr.Endereco.Worker": {
+    "Kestrel": {
       "commandName": "Project",
       "environmentVariables": {
         "DOTNET_ENVIRONMENT": "Development"
