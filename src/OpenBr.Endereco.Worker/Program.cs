@@ -2,8 +2,8 @@ using System;
 using System.IO;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Options;
-using OpenBr.Endereco.Worker.Config;
+using OpenBr.Endereco.Business.Infra.Config;
+using OpenBr.Endereco.Worker.IoC;
 using OpenBr.Endereco.Worker.Jobs;
 using OpenBr.Endereco.Worker.Schedule;
 
@@ -37,10 +37,10 @@ namespace OpenBr.Endereco.Worker
             Host.CreateDefaultBuilder(args)
                 .ConfigureServices((hostContext, services) =>
                 {
-                    //services.AddHostedService<Worker>();
-                    services.AddCronJob<MyCronJob>(o =>
+                    services.AddWorkerService(configuration);
+                    services.AddCronJob<BuscaEnderecoCorreiosJob>(o =>
                     {
-                        o.TimeZoneInfo = TimeZoneInfo.Utc;
+                        o.TimeZoneInfo = TimeZoneInfo.Local;
                         o.CronExpression = workerConfig.Scheduler.Cron;
                     });
                 });

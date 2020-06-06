@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System;
 using System.Threading;
 using OpenBr.Endereco.Business.Enums;
+using System.Collections.Generic;
 
 namespace OpenBr.Endereco.Business.Repositories
 {
@@ -37,9 +38,17 @@ namespace OpenBr.Endereco.Business.Repositories
                 .Set(x => x.Status, document.Status)
                 .Set(x => x.DataUltimaBusca, document.DataUltimaBusca)
                 .Set(x => x.DataFinalizacao, document.DataFinalizacao)
+                .Set(x => x.BuscasRealizadas, document.BuscasRealizadas)
                 .Set(x => x.Resultado, document.Resultado)
             ;
             return update;
+        }
+
+        public override async Task Editar(BuscaDocument document, CancellationToken cancellationToken = default)
+        {
+            FilterDefinition<BuscaDocument> fd = Builders<BuscaDocument>.Filter.Eq("cep", document.Cep);
+            UpdateDefinition<BuscaDocument> update = MapearCamposParaAtualizacao(document);
+            await Collection.UpdateOneAsync(fd, update, null, cancellationToken);
         }
 
         #endregion
@@ -59,6 +68,7 @@ namespace OpenBr.Endereco.Business.Repositories
             await CriarColecaoAsync();
             await CriarIndiceAsync(c => c.Cep, nameof(BuscaDocument.Cep).ToCamelCase(), true);
             await CriarIndiceAsync(c => c.Status, nameof(BuscaDocument.Status).ToCamelCase());
+            await CriarIndiceAsync(c => c.DataInclusao, nameof(BuscaDocument.DataInclusao).ToCamelCase());
             await CriarIndiceAsync(c => c.DataUltimaBusca, nameof(BuscaDocument.DataUltimaBusca).ToCamelCase());
             await CriarIndiceAsync(c => c.DataFinalizacao, nameof(BuscaDocument.DataFinalizacao).ToCamelCase());
         }
@@ -81,6 +91,14 @@ namespace OpenBr.Endereco.Business.Repositories
                 }
 
             }
+        }
+
+        ///<inheritdoc/>
+        public async Task<IEnumerable<BuscaDocument>> ObterPendentesAsync(CancellationToken cancellationToken = default)
+        {
+            FilterDefinition<BuscaDocument> fd = Builders<BuscaDocument>.Filter.Eq(nameof(BuscaDocument.Status).ToCamelCase(), BuscaStatus.Pendente);
+            IEnumerable<BuscaDocument> result = await Collection.Find(fd).ToListAsync(cancellationToken);
+            return result;
         }
 
         #endregion

@@ -1,4 +1,4 @@
-﻿namespace OpenBr.Endereco.Worker.Config
+﻿namespace OpenBr.Endereco.Business.Infra.Config
 {
 
     /// <summary>

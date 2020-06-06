@@ -1,4 +1,4 @@
-﻿namespace OpenBr.Endereco.Worker.Config
+﻿namespace OpenBr.Endereco.Business.Infra.Config
 {
 
     /// <summary>
@@ -11,6 +11,11 @@
         /// Configurações do Scheduler
         /// </summary>
         public SchedulerConfig Scheduler { get; set; }
+
+        /// <summary>
+        /// Configurações dos Correios
+        /// </summary>
+        public CorreiosConfig Correios { get; set; }
 
     }
 }

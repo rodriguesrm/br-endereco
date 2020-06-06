@@ -112,11 +112,7 @@ namespace OpenBr.Endereco.Worker.Jobs
         /// Executa a atividade agendada
         /// </summary>
         /// <param name="cancellationToken">Token de cancelamento</param>
-        public virtual async Task DoWork(CancellationToken cancellationToken)
-        {
-            _logger.LogInformation($"Do nothing [Performed {_executionCounter} time{(_executionCounter == 1 ? "" : "s")}]");
-            await Task.Delay(5000, cancellationToken);  // do the work
-        }
+        public abstract Task DoWork(CancellationToken cancellationToken);
 
         ///<inheritdoc/>
         public virtual async Task StopAsync(CancellationToken cancellationToken)

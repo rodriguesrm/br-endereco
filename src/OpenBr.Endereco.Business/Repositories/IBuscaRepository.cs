@@ -1,4 +1,5 @@
 ﻿using OpenBr.Endereco.Business.Documents;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -23,6 +24,11 @@ namespace OpenBr.Endereco.Business.Repositories
         /// </summary>
         /// <param name="cep">Cep a ser registrado para busca nos correios</param>
         Task RegistraBuscaCep(string cep);
-
+        
+        /// <summary>
+        /// Buscar registros pendentes de processamento
+        /// </summary>
+        /// <param name="cancellationToken">Token de cancelamento</param>
+        Task<IEnumerable<BuscaDocument>> ObterPendentesAsync(CancellationToken cancellationToken = default);
     }
 }
