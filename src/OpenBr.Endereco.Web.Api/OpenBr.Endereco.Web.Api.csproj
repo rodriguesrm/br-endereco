@@ -12,6 +12,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\**" />
+    <Content Remove="wwwroot\**" />
+    <EmbeddedResource Remove="wwwroot\**" />
+    <None Remove="wwwroot\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AspNetCore.HealthChecks.MongoDb" Version="3.1.0" />
     <PackageReference Include="AspNetCore.HealthChecks.UI" Version="3.1.0" />
     <PackageReference Include="AspNetCore.HealthChecks.Uris" Version="3.1.0" />
@@ -27,10 +34,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\OpenBr.Endereco.Business\OpenBr.Endereco.Business.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\data\" />
   </ItemGroup>
 
   <ItemGroup>
