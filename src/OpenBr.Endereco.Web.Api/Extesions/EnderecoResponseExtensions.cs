@@ -10,6 +10,11 @@ namespace OpenBr.Endereco.Web.Api.Extesions
     public static class EnderecoResponseExtensions
     {
 
+        /// <summary>
+        /// Mapeia um objeto cep-document para um objeto cep-response
+        /// </summary>
+        /// <param name="doc"></param>
+        /// <returns></returns>
         public static EnderecoResponse Map(this CepDocument doc)
             => new EnderecoResponse()
             {

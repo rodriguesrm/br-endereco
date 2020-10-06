@@ -1,6 +1,7 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Options;
 using MongoDB.Bson.Serialization.Conventions;
 using MongoDB.Driver;
+using OpenBr.Endereco.Business.Infra.Config;
 
 namespace OpenBr.Endereco.Business.Infra.MongoDb
 {
@@ -13,7 +14,7 @@ namespace OpenBr.Endereco.Business.Infra.MongoDb
 
         #region Objetos/Variáveis Locais
 
-        protected IConfiguration _configuration;
+        protected ApplicationConfig _appConfig;
 
         #endregion
 
@@ -23,9 +24,9 @@ namespace OpenBr.Endereco.Business.Infra.MongoDb
         /// Cria uma nova instância do provider
         /// </summary>
         /// <param name="configuration">Coleção de configurações</param>
-        public MongoDatabaseProvider(IConfiguration configuration)
+        public MongoDatabaseProvider(IOptions<ApplicationConfig> appConfig)
         {
-            _configuration = configuration;
+            _appConfig = appConfig.Value;
         }
 
         #endregion
@@ -53,15 +54,9 @@ namespace OpenBr.Endereco.Business.Infra.MongoDb
         /// </summary>
         public IMongoDatabase GetDatabase()
         {
-
-            //TODO: RR - Implementar classe geral de leitura de configuraçõeos
-            string strConexao = _configuration["ConnectionStrings:MongoDb"];
-            string nomeBd = MongoUrl.Create(strConexao).DatabaseName;
-
-            MongoClient dbClient = new MongoClient(strConexao);
-
+            string nomeBd = MongoUrl.Create(_appConfig.ConnectionStrings.MongoDb).DatabaseName;
+            MongoClient dbClient = new MongoClient(_appConfig.ConnectionStrings.MongoDb);
             return dbClient.GetDatabase(nomeBd);
-
         }
 
         #endregion

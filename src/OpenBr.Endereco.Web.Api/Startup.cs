@@ -60,8 +60,6 @@ namespace OpenBr.Endereco.Web.Api
                                 timeout: TimeSpan.FromSeconds(15),
                                 tags: new string[] { "mongodb" });
 
-            services.AddHealthChecksUI();
-
             #endregion
 
             #region Swagger
@@ -115,12 +113,11 @@ namespace OpenBr.Endereco.Web.Api
             #region HealthCheck
 
             app
-                .UseHealthChecks("/selfcheck", new HealthCheckOptions
+                .UseHealthChecks("/hc", new HealthCheckOptions
                 {
                     Predicate = _ => true,
                     ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
-                })
-                .UseHealthChecksUI();
+                });
 
             #endregion
 

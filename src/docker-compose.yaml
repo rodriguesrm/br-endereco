@@ -2,8 +2,8 @@ version: '2'
 
 services:
   
-  brasilendereco:
-    container_name: brasilendereco
+  br-endereco:
+    container_name: br-endereco
     build: 
       context: .
       dockerfile: OpenBr.Endereco.Web.Api/Dockerfile
@@ -15,7 +15,20 @@ services:
     depends_on: 
       - "mongoBrEndereco"
     networks: 
-      - netBrEndereco
+      - net-br-endereco
+      
+  br-worker:
+    container_name: br-worker
+    build: 
+      context: .
+      dockerfile: OpenBr.Endereco.Worker/Dockerfile
+    environment:  
+      - ConnectionStrings:MongoDb=mongodb://admin:admin@mongoBrEndereco:27017/endereco?authSource=admin&readPreference=primary&ssl=false
+      - Scheduler:Cron=15 4 * * *
+    depends_on: 
+      - "mongoBrEndereco"
+    networks: 
+      - net-br-endereco
 
   mongoBrEndereco:
     container_name: mongoBrEndereco
@@ -28,8 +41,8 @@ services:
         MONGO_INITDB_ROOT_USERNAME: admin
         MONGO_INITDB_ROOT_PASSWORD: admin
     networks: 
-      - netBrEndereco
+      - net-br-endereco
 
 networks: 
-  netBrEndereco:
+  net-br-endereco:
     driver: bridge

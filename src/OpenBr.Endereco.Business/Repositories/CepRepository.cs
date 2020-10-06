@@ -30,13 +30,13 @@ namespace OpenBr.Endereco.Business.Repositories
         protected override UpdateDefinition<CepDocument> MapearCamposParaAtualizacao(CepDocument document)
         {
             UpdateDefinition<CepDocument> update = Builders<CepDocument>.Update
-                .Set(x => x.Cep, nameof(CepDocument.Cep).ToCamelCase())
-                .Set(x => x.TipoLogradouro, nameof(CepDocument.TipoLogradouro).ToCamelCase())
-                .Set(x => x.Logradouro, nameof(CepDocument.Logradouro).ToCamelCase())
-                .Set(x => x.Bairro, nameof(CepDocument.Bairro).ToCamelCase())
-                .Set(x => x.Cidade, nameof(CepDocument.Cidade).ToCamelCase())
-                .Set(x => x.Uf, nameof(CepDocument.Uf).ToCamelCase())
-                .Set(x => x.CodigoIbge, nameof(CepDocument.CodigoIbge).ToCamelCase());
+                .Set(x => x.Cep, document.Cep)
+                .Set(x => x.TipoLogradouro, document.TipoLogradouro)
+                .Set(x => x.Logradouro, document.Logradouro)
+                .Set(x => x.Bairro, document.Bairro)
+                .Set(x => x.Cidade, document.Cidade)
+                .Set(x => x.Uf, document.Uf)
+                .Set(x => x.CodigoIbge, document.CodigoIbge);
             return update;
         }
 

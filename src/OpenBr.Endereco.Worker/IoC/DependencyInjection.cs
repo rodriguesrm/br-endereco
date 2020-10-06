@@ -3,8 +3,9 @@ using Microsoft.Extensions.Configuration;
 using OpenBr.Endereco.Business.Infra.MongoDb;
 using OpenBr.Endereco.Business.Repositories;
 using OpenBr.Endereco.Business.Infra.Config;
+using OpenBr.Endereco.Business.Correios;
 
-namespace OpenBr.Endereco.Business.Infra.IoC
+namespace OpenBr.Endereco.Worker.IoC
 {
 
     /// <summary>
@@ -18,24 +19,23 @@ namespace OpenBr.Endereco.Business.Infra.IoC
         /// </summary>
         /// <param name="services">Coleção de serviços de injeção</param>
         /// <param name="configuration">Coleção de configurações</param>
-        public static IServiceCollection AddApplicationService(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddWorkerService(this IServiceCollection services, IConfiguration configuration)
         {
 
             // Configurações
             services.AddScoped<IConfigurationBuilder, ConfigurationBuilder>();
             services.Configure<ApplicationConfig>(configuration.Bind);
+            services.Configure<WorkerConfig>(configuration.Bind);
 
             //MongoDB
-            services.AddScoped<MongoDatabaseProvider>();
-            services.AddScoped(s => s.GetService<MongoDatabaseProvider>().GetDatabase());
-
-            // DbCreator
-            services.AddScoped<IDbDocumentCollectionCreator, MongoCollectionCreator>();
-            services.RegisterAllTypes<IDocumentCollectionCreator>(ServiceLifetime.Scoped, typeof(MongoCollectionCreator).Assembly);
+            services.AddSingleton<MongoDatabaseProvider>();
+            services.AddSingleton(s => s.GetService<MongoDatabaseProvider>().GetDatabase());
 
             // Repositorios
-            services.AddScoped<ICepRepository, CepRepository>();
-            services.AddScoped<IBuscaRepository, BuscaRepository>();
+            services.AddSingleton<ICepRepository, CepRepository>();
+            services.AddSingleton<IBuscaRepository, BuscaRepository>();
+
+            services.AddSingleton<IIntegracaoCorreios, IntegracaoCorreios>();
 
             return services;
 
@@ -43,4 +43,5 @@ namespace OpenBr.Endereco.Business.Infra.IoC
 
 
     }
+
 }
