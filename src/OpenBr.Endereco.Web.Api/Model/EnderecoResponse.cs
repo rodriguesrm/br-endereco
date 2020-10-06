@@ -4,6 +4,9 @@ using System;
 namespace OpenBr.Endereco.Web.Api.Model
 {
 
+    /// <summary>
+    /// Modelo de resposta de endereço
+    /// </summary>
     public class EnderecoResponse
     {
 
