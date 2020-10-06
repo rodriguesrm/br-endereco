@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBr.Endereco.Web.Api", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBr.Endereco.Business", "OpenBr.Endereco.Business\OpenBr.Endereco.Business.csproj", "{C2AD7FBA-D3AC-4D52-B750-1DBE47C3373A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenBr.Endereco.Worker", "OpenBr.Endereco.Worker\OpenBr.Endereco.Worker.csproj", "{1D7C3508-9A8D-46BD-BD7B-AB089023B2C4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{C2AD7FBA-D3AC-4D52-B750-1DBE47C3373A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2AD7FBA-D3AC-4D52-B750-1DBE47C3373A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2AD7FBA-D3AC-4D52-B750-1DBE47C3373A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D7C3508-9A8D-46BD-BD7B-AB089023B2C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D7C3508-9A8D-46BD-BD7B-AB089023B2C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D7C3508-9A8D-46BD-BD7B-AB089023B2C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D7C3508-9A8D-46BD-BD7B-AB089023B2C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

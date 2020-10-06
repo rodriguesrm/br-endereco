@@ -1,6 +1,6 @@
 # Brasil/Endereço
 
-[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
+![Build](https://github.com/rodriguesrm/openbr-endereco/workflows/.RSoft%20CI/badge.svg?branch=master)
 
 API de Endereços Brasileiros com base inicial atualizada de 2019.
 
