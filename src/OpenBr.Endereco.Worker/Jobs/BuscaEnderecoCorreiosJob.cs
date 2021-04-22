@@ -1,8 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using Microsoft.Extensions.DependencyInjection;
 using OpenBr.Endereco.Business.Correios;
-using OpenBr.Endereco.Business.Infra.Config;
 using OpenBr.Endereco.Worker.Schedule;
 using System;
 using System.Threading;
@@ -83,7 +80,7 @@ namespace OpenBr.Endereco.Worker.Jobs
         ///<inheritdoc/>
         public override Task StartAsync(CancellationToken cancellationToken)
         {
-            _logger.LogInformation($"Job '{nomeJob}' iniciado");
+            _logger.LogInformation($"{nameof(BuscaEnderecoCorreiosJob)}: Job '{nomeJob}' iniciado");
             return base.StartAsync(cancellationToken);
         }
 
@@ -97,22 +94,22 @@ namespace OpenBr.Endereco.Worker.Jobs
                 IEnumerable<BuscaDocument> buscas = await _buscaRepository.ObterPendentesAsync(cancellationToken);
                 if (buscas.Count() == 0)
                 {
-                    _logger.LogInformation($"{DateTime.Now:hh:mm:ss} Nenhum registro de busca para processamento");
+                    _logger.LogInformation($"{nameof(BuscaEnderecoCorreiosJob)}: Nenhum registro de busca para processamento");
                 }
                 else
                 {
-                    _logger.LogInformation($"{DateTime.Now:hh:mm:ss} Encontrados {buscas.Count()} registros para processamento");
+                    _logger.LogInformation($"{nameof(BuscaEnderecoCorreiosJob)}: Encontrados {buscas.Count()} registros para processamento");
                     foreach (BuscaDocument b in buscas)
                     {
 
                         try
                         {
 
-                            _logger.LogInformation($"{DateTime.Now:hh:mm:ss} Buscando cep '{b.Cep}'");
+                            _logger.LogInformation($"{nameof(BuscaEnderecoCorreiosJob)}: Buscando cep '{b.Cep}'");
                             CepDocument endereco = await _correios.BuscaEndereco(b.Cep);
                             if (endereco == null)
                             {
-                                _logger.LogInformation($"{DateTime.Now:hh:mm:ss} Cep '{b.Cep}' não encontrado, nova tentativa será realizada no futuro");
+                                _logger.LogInformation($"{nameof(BuscaEnderecoCorreiosJob)}: Cep '{b.Cep}' não encontrado, nova tentativa será realizada no futuro");
                                 b.BuscasRealizadas++;
                                 b.DataUltimaBusca = DateTime.Now;
 
@@ -123,16 +120,16 @@ namespace OpenBr.Endereco.Worker.Jobs
                                 b.DataFinalizacao = DateTime.Now;
                                 b.DataUltimaBusca = DateTime.Now;
                                 b.Resultado = endereco;
-                                _logger.LogInformation($"{DateTime.Now:hh:mm:ss} Cep '{b.Cep}' localizado");
+                                _logger.LogInformation($"{nameof(BuscaEnderecoCorreiosJob)}: Cep '{b.Cep}' localizado");
                                 if (await _cepRepository.ObterPorCep(b.Cep, cancellationToken) == null)
                                 {
-                                    _logger.LogInformation($"{DateTime.Now:hh:mm:ss} Carregando dados do '{b.Cep}' para base");
+                                    _logger.LogInformation($"{nameof(BuscaEnderecoCorreiosJob)}: Carregando dados do '{b.Cep}' para base");
                                     b.Status = BuscaStatus.Sucesso;
                                     await _cepRepository.Adicionar(endereco, cancellationToken);
                                 }
                                 else
                                 {
-                                    _logger.LogInformation($"{DateTime.Now:hh:mm:ss} Cep '{b.Cep}' localizado, carregando para base");
+                                    _logger.LogInformation($"{nameof(BuscaEnderecoCorreiosJob)}: Cep '{b.Cep}' localizado, carregando para base");
                                     b.Status = BuscaStatus.Cancelada;
                                 }
                             }
@@ -141,7 +138,7 @@ namespace OpenBr.Endereco.Worker.Jobs
                         }
                         catch (Exception ex)
                         {
-                            _logger.LogError(ex, $"Falha no processamento do cep '{b.Cep}'");
+                            _logger.LogError(ex, $"{nameof(BuscaEnderecoCorreiosJob)}: Falha no processamento do cep '{b.Cep}'");
                         }
 
                     }
@@ -150,7 +147,7 @@ namespace OpenBr.Endereco.Worker.Jobs
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Falha na busca de ceps pendentes");
+                _logger.LogError(ex, $"{nameof(BuscaEnderecoCorreiosJob)}: Falha na busca de ceps pendentes");
             }
 
         }
@@ -158,7 +155,7 @@ namespace OpenBr.Endereco.Worker.Jobs
         ///<inheritdoc/>
         public override Task StopAsync(CancellationToken cancellationToken)
         {
-            _logger.LogInformation($"Job '{nomeJob}' finalizado");
+            _logger.LogInformation($"{nameof(BuscaEnderecoCorreiosJob)}: Job '{nomeJob}' finalizado");
             return base.StopAsync(cancellationToken);
         }
 

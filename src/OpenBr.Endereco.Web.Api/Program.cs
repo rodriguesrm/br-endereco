@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using RSoft.Logs.Extensions;
 
 namespace OpenBr.Endereco.Web.Api
 {
@@ -25,6 +27,12 @@ namespace OpenBr.Endereco.Web.Api
         /// <param name="args">Lista de argumentos</param>
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                .ConfigureLogging(logging =>
+                {
+                    logging.ClearProviders();
+                    logging.AddConsoleLogger();
+                    logging.AddSeqLogger();
+                })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();

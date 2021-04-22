@@ -13,6 +13,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using RSoft.Logs.Extensions;
+using RSoft.Logs.Middleware;
 
 namespace OpenBr.Endereco.Web.Api
 {
@@ -90,6 +92,7 @@ namespace OpenBr.Endereco.Web.Api
 
             // Serviços de injeção da aplicação
             services.AddApplicationService(Configuration);
+            services.AddMiddlewareLoggingOption(Configuration);
 
             services
                 .AddControllers(opt => GlobalFilters.Configure(opt))
@@ -146,6 +149,8 @@ namespace OpenBr.Endereco.Web.Api
 
             app.UseStaticFiles();
             app.UseResponseCaching();
+
+            app.UseMiddleware<RequestResponseLogging<Startup>>();
 
             app.UseEndpoints(endpoints =>
             {
