@@ -6,6 +6,8 @@ using OpenBr.Endereco.Business.Infra.Config;
 using OpenBr.Endereco.Worker.IoC;
 using OpenBr.Endereco.Worker.Jobs;
 using OpenBr.Endereco.Worker.Schedule;
+using Microsoft.Extensions.Logging;
+using RSoft.Logs.Extensions;
 
 namespace OpenBr.Endereco.Worker
 {
@@ -35,6 +37,12 @@ namespace OpenBr.Endereco.Worker
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                .ConfigureLogging(logging =>
+                {
+                    logging.ClearProviders();
+                    logging.AddConsoleLogger();
+                    logging.AddSeqLogger();
+                })
                 .ConfigureServices((hostContext, services) =>
                 {
                     services.AddWorkerService(configuration);
