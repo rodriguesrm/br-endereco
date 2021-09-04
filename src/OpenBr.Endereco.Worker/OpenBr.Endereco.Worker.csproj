@@ -4,6 +4,7 @@
     <TargetFramework>net5.0</TargetFramework>
     <UserSecretsId>dotnet-OpenBr.Endereco.Worker-C7C4FD68-C20A-4485-965B-EF4149D50EDF</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <Version>1.2.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
