@@ -4,7 +4,6 @@ using System.Reflection;
 using OpenBr.Endereco.Business.Infra.IoC;
 using OpenBr.Endereco.Business.Infra.MongoDb;
 using OpenBr.Endereco.Web.Api.Filters;
-using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
@@ -15,6 +14,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using RSoft.Logs.Extensions;
 using RSoft.Logs.Middleware;
+using HealthChecks.UI.Client;
 
 namespace OpenBr.Endereco.Web.Api
 {
