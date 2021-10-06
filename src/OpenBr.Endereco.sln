@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.30104.148
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{E93C5BBE-B737-48F7-B858-358A213D67D3}"
+	ProjectSection(SolutionItems) = preProject
+		..\README.md = ..\README.md
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docker", "Docker", "{9D626D2D-10AD-4CB2-99AB-1D96CA4FEC4E}"
 EndProject
@@ -11,7 +14,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBr.Endereco.Web.Api", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBr.Endereco.Business", "OpenBr.Endereco.Business\OpenBr.Endereco.Business.csproj", "{C2AD7FBA-D3AC-4D52-B750-1DBE47C3373A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenBr.Endereco.Worker", "OpenBr.Endereco.Worker\OpenBr.Endereco.Worker.csproj", "{1D7C3508-9A8D-46BD-BD7B-AB089023B2C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBr.Endereco.Worker", "OpenBr.Endereco.Worker\OpenBr.Endereco.Worker.csproj", "{1D7C3508-9A8D-46BD-BD7B-AB089023B2C4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

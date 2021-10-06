@@ -39,9 +39,8 @@ A aplicação irá criar as collections na base MongoDb.
 
 ### BackLog
 
-  [x] Health-Check 
+  [X] Health-Check 
   [X] Swagger
   [X] Dump inicial base de cep
-  [ ] Serilog
-  [ ] Docker-Compose
-  [ ] Serviço (Worker) para busca nos correios de CEPs não encontrados
+  [X] Docker-Compose
+  [X] Serviço (Worker) para busca nos correios de CEPs não encontrados
