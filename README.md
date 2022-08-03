@@ -6,7 +6,7 @@ API de Endereços Brasileiros com base inicial atualizada de 2019.
 
 ## Stack Tecnologico
 
-* DotNet Core 3.1 - https://docs.microsoft.com/pt-br/aspnet/core/?view=aspnetcore-3.1!
+* DotNet Core 6 - https://dotnet.microsoft.com/en-us/download/dotnet/6.0!
 * MongoDb - https://www.mongodb.com/
 
 ## Preparaçao do Banco [ `MongoDb` ]
