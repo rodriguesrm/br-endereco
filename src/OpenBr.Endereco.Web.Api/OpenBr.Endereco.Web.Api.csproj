@@ -5,16 +5,8 @@
     <UserSecretsId>323a9fa3-b0ae-4741-bd3d-95671323f238</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <Version>1.4.0</Version>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <DocumentationFile>OpenBr.Endereco.Web.Api.xml</DocumentationFile>
-    <OutputPath>bin\Debug\net6.0</OutputPath>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>OpenBr.Endereco.Web.Api.xml</DocumentationFile>
-    <OutputPath>bin\Release\net6.0</OutputPath>
   </PropertyGroup>
 
   <ItemGroup>
@@ -41,12 +33,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\OpenBr.Endereco.Business\OpenBr.Endereco.Business.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="OpenBr.Endereco.Web.Api.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 
 
